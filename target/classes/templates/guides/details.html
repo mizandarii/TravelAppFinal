@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Guide Details</title>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet"/>
+    <style>
+        .guide_tours {
+            list-style: none;
+            padding-left: 0;
+        }
+        /* Align guide details on the left */
+        .guide-details {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+    <div th:insert="~{layouts/menuFragment :: menu}"></div>
+
+    <h1>Guide Details</h1>
+
+    <div class="row guide-details"> <!-- Added guide-details class here -->
+        <div class="col-md-6">
+            <p><b>First Name:</b> <span th:text="${guide.firstname}"></span></p>
+            <p><b>Last Name:</b> <span th:text="${guide.lastname}"></span></p>
+            <p><b>Email:</b> <span th:text="${guide.email}"></span></p>
+            <p><b>Phone:</b> <span th:text="${guide.phone}"></span></p>
+            <p><b>Bio:</b> <span th:text="${guide.bio}"></span></p>
+            <p><b>Tours:</b></p>
+            <ul>
+                <li class="guide_tours" th:each="tour : ${guide.tours}">
+                    <a th:href="@{/tours/details/{id}(id=${tour.id})}" th:text="${tour.name}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyEbxG5xk82UOxlJJmMA5wgGjFkR5DgNh"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

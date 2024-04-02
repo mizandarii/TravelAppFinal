@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!--<link th:href="@{/css/style.css}" rel="stylesheet"/>-->
+
+    <style>
+        img {
+            max-width: 100%; /* Set maximum width to 100% of its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure proper spacing and alignment */
+            margin: auto; /* Center the image horizontally */
+        }
+        p{
+        margin-top:20px;
+        margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div th:insert="~{layouts/menuFragment :: menu}"></div>
+    <h1>Welcome to TravelApp</h1>
+    <div class="container flex-container">
+    <div>
+    <img th:src="@{/img/mountain-view.jpg}" alt="home-mountain">
+    </div>
+        <div class = flex-item>
+            <p>Introducing our exciting new travel app that opens the door to a world of incredible adventures! Our app offers a diverse range of carefully curated tours designed to cater to every traveler's preferences. Whether you're a history enthusiast, a nature lover, or someone seeking thrilling experiences, we have the perfect tour for you.</p>
+        </div>
+        <a th:href="@{/tours/list}" class="btn btn-primary">Explore our Tours</a>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div th:fragment="menu">
+    <nav style="width:100%;" class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li sec:authorize="hasAnyAuthority('ROLE_USER')" class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/userprofile}">Profile</a>
+                </li>
+                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')" class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" th:href="@{/users}">Users</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/logout}">Sign Out</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/loginNew}">Login</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/registration}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/places/list}">Places</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/tours/list}">Tours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/guides}">Guides</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:if="${user != null}" th:href="@{/users/viewUserinfo/{id}(id=${user.id})}" >Account</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Place Details</title>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet"/>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+    <div th:insert="~{layouts/menuFragment :: menu}"></div>
+
+    <h1>Place Details</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p><b>Name:</b> <span th:text="${place.name}"></span></p>
+            <p><b>City:</b> <span th:text="${place.city}"></span></p>
+            <p><b>Address:</b> <span th:text="${place.address}"></span></p>
+            <p><b>Website:</b> <a th:href="${place.website}" th:text="${place.website}"></a></p>
+            <p><b>Description:</b> <span th:text="${place.description}"></span></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="imageColumn" class="row justify-content-center">
+            <div th:each="image : ${place.images}" class="col-md-6">
+                <img th:src="${image.imgUrl}" class="img-fluid" alt="Image">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyEbxG5xk82UOxlJJmMA5wgGjFkR5DgNh"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

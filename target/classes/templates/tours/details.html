@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tour Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .places_list {
+            list-style: none;
+            padding-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+    <div th:insert="~{layouts/menuFragment :: menu}"></div>
+
+    <h1>Tour Details</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p><b>Name:</b> <span th:text="${tour.name}"></span></p>
+            <p><b>City:</b> <span th:text="${tour.city}"></span></p>
+            <p><b>Price:</b> <span th:text="${tour.price}"></span></p>
+
+            <p><b>Guide:</b> <a th:href="@{/guides/details/{id}(id=${tour.guide.id})}"
+                                th:text="${tour.guide.firstname + ' ' + tour.guide.lastname}"></a></p>
+
+            <p><b>Places:</b>
+            <ul class="places_list">
+                <li th:each="place : ${tour.places}">
+                    <a th:href="@{/places/details/{id}(id=${place.id})}" th:text="${place.name}"></a>
+                    <img th:src="${place.images[0].imgUrl}" class="d-block w-100" alt="Image">
+                </li>
+            </ul>
+            </p>
+
+            <div th:if="${tour.reviews}">
+                <h3>Reviews:</h3>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div th:each="review : ${tour.reviews}" class="col-lg-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <b>User:</b> <span th:text="${review.user.username}"></span><br/>
+                                        <b>Rating:</b> <span th:text="${review.rating}"></span><br/>
+                                        <b>Comment:</b> <span th:text="${review.tourComment}"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form th:action="@{/users/addTourToUser}" method="post">
+                <input type="hidden" name="tourId" th:value="${tour.id}"/>
+                <button type="submit" class="btn btn-primary">Add to My Tours</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyEbxG5xk82UOxlJJmMA5wgGjFkR5DgNh"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

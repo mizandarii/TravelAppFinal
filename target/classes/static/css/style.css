@@ -1,0 +1,32 @@
+/* styles.css */
+
+body {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.container {
+
+}
+
+h1 {
+    color: #0D0C0B;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex;
+    text-align: center;
+}
+
+.flex-item {
+      flex: 1;
+      margin: 10px;
+}
+
+img {
+    max-width: 100%;
+}
