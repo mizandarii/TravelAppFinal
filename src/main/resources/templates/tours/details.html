@@ -24,6 +24,10 @@
             <p><b>Name:</b> <span th:text="${tour.name}"></span></p>
             <p><b>City:</b> <span th:text="${tour.city}"></span></p>
             <p><b>Price:</b> <span th:text="${tour.price}"></span></p>
+            <p><b>Start:</b> <span th:text="${tour.start}"></span></p>
+            <p><b>End:</b> <span th:text="${tour.endDate}"></span></p>
+            <p><b>Transport type:</b> <span th:text="${tour.transport.type}"></span></p>
+            <p><b>Transport comfort:</b> <span th:text="${tour.transport.comfort}"></span></p>
 
             <p><b>Guide:</b> <a th:href="@{/guides/details/{id}(id=${tour.guide.id})}"
                                 th:text="${tour.guide.firstname + ' ' + tour.guide.lastname}"></a></p>
