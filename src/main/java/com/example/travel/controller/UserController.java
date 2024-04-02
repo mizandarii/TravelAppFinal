@@ -40,19 +40,14 @@ public class UserController {
     public String addTourToUser(@RequestParam Long tourId, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            // User is not authenticated, handle the scenario accordingly
-            // For example, you can redirect the user to the login page
             return "redirect:/login";
         }
 
         User currentUser = userService.getCurrentLoggedInUser();
         if (currentUser == null) {
-            // Handle the scenario when the current user is null
-            // For example, display an error message or redirect to an error page
             return "redirect:/error";
         }
 
-        // Proceed with adding the tour to the user
         userService.addTourToUser(currentUser.getId(), tourId);
         model.addAttribute("user", currentUser);
         return "redirect:/tours/list";
