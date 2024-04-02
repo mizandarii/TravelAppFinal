@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:style="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Create a Tour</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+<div class="container text-center">
+    <div th:insert="~{layouts/menuFragment :: menu}"></div>
+
+    <h1>Create Tour</h1>
+
+    <form th:action="@{/places/create}" method="post" th:object="${tour}">
+        <div class="form-group">
+            <label for="name">Tour Name: *</label>
+            <input type="text" id="name" name="name" th:field="*{name}" />
+        </div>
+
+        <div class="form-group">
+            <label for="city">City: *</label>
+            <input type="text" id="city" name="city" th:field="*{city}" />
+        </div>
+
+        <div class="form-group">
+            <label for="start">Start: *</label>
+            <input type="text" id="start" name="start" th:field="*{start}" />
+        </div>
+
+        <div class="form-group">
+            <label for="end">End: *</label>
+            <input type="text" id="end" name="end" th:field="*{end}" />
+        </div>
+
+        <div class="form-group">
+            <label for="spots">Spots:</label>
+            <input type="text" id="spots" name="spots" th:field="*{spots}" />
+        </div>
+
+        <div class="form-group">
+            <label for="freeSpots">Free Spots:</label>
+            <input type="text" id="freeSpots" name="freeSpots" th:field="*{freeSpots}" />
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" th:field="*{price}" />
+        </div>
+
+        <div class="form-group">
+            <label for="places">Places:</label>
+            <input type="text" id="places" name="places" th:field="*{places}" />
+        </div>
+
+        <button type="submit">Create</button>
+    </form>
+</div>
+</body>
+
+</html>
